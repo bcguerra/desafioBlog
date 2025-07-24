@@ -17,50 +17,47 @@ O Desafio Blog tem como principal meta fornecer uma plataforma intuitiva para a 
 ## 🛠️ Tecnologias Utilizadasa
 Este projeto foi construído utilizando as seguintes tecnologias principais:
 
-React: Biblioteca JavaScript para construção de interfaces de usuário.
+**React**: Biblioteca JavaScript para construção de interfaces de usuário.
 
-Redux: Gerenciamento de estado previsível para aplicativos JavaScript.
+**Redux**: Gerenciamento de estado previsível para aplicativos JavaScript.
 
-React Router DOM: Roteamento declarativo para o React.
+**React Router DOM**: Roteamento declarativo para o React.
 
-Material-UI (MUI): Uma biblioteca de componentes React que implementa o Material Design do Google.
+**Material-UI (MUI)**: Uma biblioteca de componentes React que implementa o Material Design do Google.
 
 
 ## ▶️ Como Rodar o Projeto
 Siga estes passos simples para ter o projeto rodando em sua máquina local.
 
 Pré-requisitos
-Certifique-se de ter o Node.js e o npm (Node Package Manager) instalados em seu sistema. Você pode verificar suas versões com os comandos abaixo:
+Certifique-se de ter o Node.js e o npm instalados em seu sistema. Você pode verificar suas versões com os comandos abaixo:
 ```bash
 node -v
 npm -v
 ```
-Caso a sua versão já instalada não seja compativel com o projeto, instale as versões utilizadas por mim:
+
+**Para garantir que seu projeto funcione utilize as versões abaixo:**
 
 ```bash
 node 22.17.0
 npm 10.9.2
 ```
 
-1. Clonar o Repositório
 Comece clonando o projeto do [GitHub](https://github.com/bcguerra/desafioBlog.git) para o seu ambiente local:
 ```bash
 git clone https://github.com/bcguerra/desafioBlog.git
 ```
 
-2. Acessar o Diretório do Projeto
 Navegue até o diretório do projeto clonado:
 ```bash
 cd desafioBlog
 ```
 
-3. Instalar as Dependências
 Instale todas as dependências do projeto usando o npm:
 ```bash
 npm install
 ```
 
-4. Iniciar o Aplicativo
 Finalmente, inicie o servidor de desenvolvimento. Isso abrirá o aplicativo no seu navegador padrão:
 ```bash
 npm run dev
