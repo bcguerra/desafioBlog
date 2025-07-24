@@ -17,7 +17,7 @@ import {
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-import styles from './PostDetail.module.css';
+import styles from './postDetail.module.css';
 
 function PostDetail() {
   const { postId } = useParams();
