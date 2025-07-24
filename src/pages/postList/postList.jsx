@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchPosts } from '../../store/actions/postActions';
 import { fetchUsers } from '../../store/actions/userActions';
@@ -14,6 +14,7 @@ import {
   MenuItem,
   Grid,
   Fade,
+  Pagination,
 } from '@mui/material';
 
 import styles from './postList.module.css';
@@ -31,6 +32,11 @@ function PostList() {
 
   const [selectedUser, setSelectedUser] = useState('');
   const [filteredPosts, setFilteredPosts] = useState([]);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 10;
+
+  const postsGridRef = useRef(null);
 
   useEffect(() => {
     if (!postsLoading && posts.length === 0 && !postsError) {
@@ -52,10 +58,29 @@ function PostList() {
       }
     }
     setFilteredPosts(currentPosts);
+    setCurrentPage(1);
   }, [posts, users, selectedUser]);
+
+  useEffect(() => {
+    if (currentPage > 1) {
+      postsGridRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [currentPage, selectedUser, filteredPosts]);
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPostsToDisplay = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
+
+  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
 
   const handleUserChange = (event) => {
     setSelectedUser(event.target.value);
+  };
+
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
   };
 
   let content;
@@ -96,36 +121,55 @@ function PostList() {
   } else {
     content = (
       <Fade in={true} timeout={500}>
-        <Grid container spacing={4} justifyContent="center" alignItems="stretch">
-          {filteredPosts.length > 0 ? (
-            filteredPosts.map((post) => {
-              const author = users.find((user) => user.id === post.userId);
-              const authorName = author ? author.name : `Usuário ${post.userId}`;
-              return (
-                <Grid key={post.id}>
-                  <PostCard
-                    id={post.id}
-                    userId={post.userId}
-                    user={authorName}
-                    title={post.title}
-                    description={post.description}
-                  />
-                </Grid>
-              );
-            })
-          ) : (
-            <Grid>
-              <Box className={styles.noPostsForUserContainer}>
-                <Typography variant="h5" color="text.secondary">
-                  Nenhuma postagem encontrada para o usuário selecionado.
-                </Typography>
-                <Typography variant="body1" color="text.secondary" className={styles.noPostsForUserText}>
-                  Tente selecionar "Todos os Autores" para ver mais posts.
-                </Typography>
-              </Box>
+        {currentPostsToDisplay.length > 0 ? (
+          <Box>
+            <Grid
+              container
+              spacing={4}
+              justifyContent="center"
+              alignItems="stretch"
+              ref={postsGridRef}
+            >
+              {currentPostsToDisplay.map((post) => {
+                const author = users.find((user) => user.id === post.userId);
+                const authorName = author ? author.name : `Usuário ${post.userId}`;
+                return (
+                  <Grid key={post.id}>
+                    <PostCard
+                      id={post.id}
+                      userId={post.userId}
+                      user={authorName}
+                      title={post.title}
+                      description={post.description}
+                    />
+                  </Grid>
+                );
+              })}
             </Grid>
-          )}
-        </Grid>
+            {totalPages > 1 && (
+              <Box className={styles.paginationContainer}>
+                <Pagination
+                  count={totalPages}
+                  page={currentPage}
+                  onChange={handlePageChange}
+                  color="primary"
+                  size="small"
+                />
+              </Box>
+            )}
+          </Box>
+        ) : (
+          <Grid>
+            <Box className={styles.noPostsForUserContainer}>
+              <Typography variant="h5" color="text.secondary">
+                Nenhuma postagem encontrada para o usuário selecionado.
+              </Typography>
+              <Typography variant="body1" color="text.secondary" className={styles.noPostsForUserText}>
+                Tente selecionar "Todos os Autores" para ver mais posts.
+              </Typography>
+            </Box>
+          </Grid>
+        )}
       </Fade>
     );
   }
