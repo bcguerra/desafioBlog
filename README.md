@@ -35,6 +35,12 @@ Certifique-se de ter o Node.js e o npm (Node Package Manager) instalados em seu 
 node -v
 npm -v
 ```
+Caso a sua versão já instalada não seja compativel com o projeto, instale as versões utilizadas por mim:
+
+```bash
+node 22.17.0
+npm 10.9.2
+```
 
 1. Clonar o Repositório
 Comece clonando o projeto do [GitHub](https://github.com/bcguerra/desafioBlog.git) para o seu ambiente local:
