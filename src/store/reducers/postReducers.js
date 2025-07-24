@@ -2,20 +2,18 @@ import {
   FETCH_POSTS_REQUEST,
   FETCH_POSTS_SUCCESS,
   FETCH_POSTS_FAILURE,
-  FETCH_COMMENTS_REQUEST,
-  FETCH_COMMENTS_SUCCESS,
-  FETCH_COMMENTS_FAILURE,
+  FETCH_COMMENTS_BY_POSTID_REQUEST,
+  FETCH_COMMENTS_BY_POSTID_SUCCESS,
+  FETCH_COMMENTS_BY_POSTID_FAILURE,
   CLEAR_COMMENTS
-} from '../actions/postActions'; // Assumindo que todas as actions vêm daqui
+} from '../actions/postActions';
 
 const initialState = {
-  // Estado para os posts
   posts: {
     items: [],
     loading: false,
     error: null,
   },
-  // Estado para os comentários do post atualmente visualizado
   comments: {
     items: [],
     loading: false,
@@ -28,7 +26,7 @@ const postReducer = (state = initialState, action) => {
     case FETCH_POSTS_REQUEST:
       return {
         ...state,
-        posts: { // Atualiza apenas a fatia 'posts'
+        posts: {
           ...state.posts,
           loading: true,
           error: null,
@@ -37,7 +35,7 @@ const postReducer = (state = initialState, action) => {
     case FETCH_POSTS_SUCCESS:
       return {
         ...state,
-        posts: { // Atualiza apenas a fatia 'posts'
+        posts: {
           ...state.posts,
           loading: false,
           items: action.payload,
@@ -47,46 +45,46 @@ const postReducer = (state = initialState, action) => {
     case FETCH_POSTS_FAILURE:
       return {
         ...state,
-        posts: { // Atualiza apenas a fatia 'posts'
+        posts: {
           ...state.posts,
           loading: false,
           error: action.payload,
         },
       };
 
-    case FETCH_COMMENTS_REQUEST:
+    case FETCH_COMMENTS_BY_POSTID_REQUEST:
       return {
         ...state,
-        comments: { // Atualiza apenas a fatia 'comments'
+        comments: {
           ...state.comments,
           loading: true,
           error: null,
         },
       };
-    case FETCH_COMMENTS_SUCCESS:
+    case FETCH_COMMENTS_BY_POSTID_SUCCESS:
       return {
         ...state,
-        comments: { // Atualiza apenas a fatia 'comments'
+        comments: {
           ...state.comments,
           loading: false,
-          items: action.payload, // Agora os comentários vão para 'comments.items'
+          items: action.payload,
           error: null,
         },
       };
-    case FETCH_COMMENTS_FAILURE:
+    case FETCH_COMMENTS_BY_POSTID_FAILURE:
       return {
         ...state,
-        comments: { // Atualiza apenas a fatia 'comments'
+        comments: {
           ...state.comments,
           loading: false,
           error: action.payload,
         },
       };
-    case CLEAR_COMMENTS: // Novo case para limpar os comentários
+    case CLEAR_COMMENTS:
       return {
         ...state,
         comments: {
-          ...initialState.comments, // Reseta o estado dos comentários para o valor inicial
+          ...initialState.comments,
         },
       };
     default:

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchComments, fetchPosts, clearComments } from '../../store/actions/postActions';
+import { fetchCommentsByPostId, fetchPosts, clearComments } from '../../store/actions/postActions';
 import { fetchUsers } from '../../store/actions/userActions';
 import CommentCard from '../../components/commentCards';
 
@@ -53,7 +53,7 @@ function PostDetail() {
 
     dispatch(clearComments());
     if (postId) {
-      dispatch(fetchComments(postId));
+      dispatch(fetchCommentsByPostId(postId));
     }
 
     if (users.length === 0 && !usersLoading && !usersError) {

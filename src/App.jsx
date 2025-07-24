@@ -3,7 +3,7 @@ import Header from './components/header';
 import PostList from './pages/postList/postList';
 import Footer from './components/footer';
 import PostDetail from './pages/postDetail/postDetail';
-import UserDetail from './pages/userDetail';
+import UserDetail from './pages/userDetail/userDetail';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';

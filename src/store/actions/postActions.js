@@ -2,14 +2,12 @@ export const FETCH_POSTS_REQUEST = 'FETCH_POSTS_REQUEST';
 export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS';
 export const FETCH_POSTS_FAILURE = 'FETCH_POSTS_FAILURE';
 
-// Tipos de ações para comentários
-export const FETCH_COMMENTS_REQUEST = 'FETCH_COMMENTS_REQUEST';
-export const FETCH_COMMENTS_SUCCESS = 'FETCH_COMMENTS_SUCCESS';
-export const FETCH_COMMENTS_FAILURE = 'FETCH_COMMENTS_FAILURE';
+export const FETCH_COMMENTS_BY_POSTID_REQUEST = 'FETCH_COMMENTS_BY_POSTID_REQUEST';
+export const FETCH_COMMENTS_BY_POSTID_SUCCESS = 'FETCH_COMMENTS_BY_POSTID_SUCCESS';
+export const FETCH_COMMENTS_BY_POSTID_FAILURE = 'FETCH_COMMENTS_BY_POSTID_FAILURE';
 
 export const CLEAR_COMMENTS = 'CLEAR_COMMENTS';
 
-// Actions Creators
 export const fetchPostsRequest = () => ({
   type: FETCH_POSTS_REQUEST,
 });
@@ -24,17 +22,17 @@ export const fetchPostsFailure = (error) => ({
   payload: error,
 });
 
-export const fetchCommentsRequest = () => ({
-  type: FETCH_COMMENTS_REQUEST,
+export const fetchCommentsByPostIdRequest = () => ({
+  type: FETCH_COMMENTS_BY_POSTID_REQUEST,
 });
 
-export const fetchCommentsSuccess = (comments) => ({
-  type: FETCH_COMMENTS_SUCCESS,
+export const fetchCommentsByPostIdSuccess = (comments) => ({
+  type: FETCH_COMMENTS_BY_POSTID_SUCCESS,
   payload: comments,
 });
 
-export const fetchCommentsFailure = (error) => ({
-  type: FETCH_COMMENTS_FAILURE,
+export const fetchCommentsByPostIdFailure = (error) => ({
+  type: FETCH_COMMENTS_BY_POSTID_FAILURE,
   payload: error,
 });
 
@@ -66,18 +64,18 @@ export const fetchPosts = () => {
   };
 };
 
-export const fetchComments = (postId) => {
+export const fetchCommentsByPostId = (postId) => {
   return async (dispatch) => {
-    dispatch(fetchCommentsRequest());
+    dispatch(fetchCommentsByPostIdRequest());
     try {
       const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`);
       if (!response.ok) {
         throw new Error('Failed to fetch comments');
       }
       const data = await response.json();
-      dispatch(fetchCommentsSuccess(data));
+      dispatch(fetchCommentsByPostIdSuccess(data));
     } catch (error) {
-      dispatch(fetchCommentsFailure(error.message));
+      dispatch(fetchCommentsByPostIdFailure(error.message));
     }
   };
 };

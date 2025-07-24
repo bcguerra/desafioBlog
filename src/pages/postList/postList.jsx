@@ -16,7 +16,6 @@ import {
   Fade,
 } from '@mui/material';
 
-// Import the CSS module
 import styles from './postList.module.css';
 
 function PostList() {
@@ -143,7 +142,7 @@ function PostList() {
           Conheça nosso BLOG!
         </Typography>
         <Typography variant="h5" color="text.secondary" className={styles.subtitle}>
-          Explore as últimas postagens da nossa comunidade.
+          Explore todas as postagens da nossa comunidade.
         </Typography>
       </Box>
 
