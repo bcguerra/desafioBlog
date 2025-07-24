@@ -1,0 +1,104 @@
+.contentBox {
+  padding: 25px;
+  margin-top: 2rem;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
+}
+
+.postTitle {
+  font-weight: bold;
+  color: #363636;
+  font-size: 3rem;
+}
+
+@media (min-width: 600px) {
+  .postTitle {
+    font-size: 3rem;
+  }
+}
+@media (min-width: 960px) {
+  .postTitle {
+    font-size: 3.5rem;
+  }
+}
+
+.authorLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.authorNameSpan {
+  color: #363636;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.authorNameSpan:hover {
+  text-decoration: underline;
+}
+
+.postBody {
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+  .postBody {
+    font-size: 0.95rem;
+  }
+}
+
+.commentsTitle {
+  font-weight: bold;
+  color: #363636;
+  font-size: 1.75rem;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 600px) {
+  .commentsTitle {
+    font-size: 1.5rem;
+  }
+}
+
+.messageBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 30vh;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.messageBox.mainLoading {
+  min-height: 50vh;
+}
+
+.backButton {
+  margin-bottom: 32px;
+  padding: 12px 24px;
+  border-radius: 8px;
+}
+
+.alertBox {
+  margin-top: 32px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
+}
+
+.commentsLoadingBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.noCommentsBox {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  text-align: center;
+}

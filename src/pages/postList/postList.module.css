@@ -1,0 +1,91 @@
+.postListContainer {
+  margin-top: 32px; 
+  margin-bottom: 32px;
+}
+
+.headerContainer {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.pageTitle {
+  font-weight: bold;
+  color: #363636;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 2.5rem;
+}
+
+@media (min-width: 600px) {
+  .pageTitle {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 960px) {
+  .pageTitle {
+    font-size: 3.5rem;
+  }
+}
+
+.subtitle {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.filterSection {
+  margin-top: 40px; 
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+@media (min-width: 600px) {
+  .filterSection {
+    flex-direction: row;
+  }
+}
+
+.authorFilter {
+  min-width: 250px;
+  width: 100%;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+}
+
+.loadingText {
+  margin-top: 24px;
+}
+
+.errorAlert {
+  margin-top: 32px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
+}
+
+.noContentContainer,
+.noPostsForUserContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 30vh;
+}
+
+.noContentText,
+.noPostsForUserText {
+  margin-top: 8px;
+}
